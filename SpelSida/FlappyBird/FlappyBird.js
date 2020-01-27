@@ -4,6 +4,9 @@ let gap = 200;
 let alive = true;
 let wallWidth = 20;
 let img;
+let hs;
+let newHs;
+let hSText;
 
 function preload(){
 	img = loadImage("Images/Bird.png");
@@ -13,12 +16,16 @@ function setup(){
 	createCanvas(600,400);
 	bird = new Bird(img);
 	setInterval(spawnWalls,1000);
+	hSText = createP("HighScore: 0");
+	hs = 0;
+	newHs = 0;
 }
 
 function restartGame(){
 	walls = [];
 	gap = 200;
 	alive = true;
+	newHs = 0;
 }
 
 function draw(){
@@ -37,6 +44,10 @@ function draw(){
 			if (walls[i].crash(bird.x,bird.y,bird.r)){
 				//We are dead
 				alive = false;
+				if (newHs > hs){
+					hs = newHs;
+				}
+				hSText.html("HighScore: " + hs);
 			}
 		}
 
@@ -79,5 +90,6 @@ function spawnWalls(){
 		walls.push(new Wall(height-y/2,y,x));
 
 		gap--;
+		newHs++;
 	}
 }
