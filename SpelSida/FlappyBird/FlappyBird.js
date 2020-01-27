@@ -3,10 +3,15 @@ let walls = [];
 let gap = 200;
 let alive = true;
 let wallWidth = 20;
+let img;
+
+function preload(){
+	img = loadImage("Images/Bird.png");
+}
 
 function setup(){
 	createCanvas(600,400);
-	bird = new Bird();
+	bird = new Bird(img);
 	setInterval(spawnWalls,1000);
 }
 
@@ -18,7 +23,7 @@ function restartGame(){
 
 function draw(){
 	if (alive){
-		background(40,20,200);
+		background(0,255,255);
 
 		//Move Walls
 		for (let i = 0; i < walls.length; i++){
