@@ -37,4 +37,4 @@ class Bird{
 		image(img,0,0,this.r*2,this.r*2);
 		pop();
 	}
-}z
+}

@@ -71,6 +71,13 @@ function draw(){
 
 }
 
+function mousePressed(){
+	bird.jump();
+	if (!alive){
+		restartGame();
+	}
+}
+
 function keyPressed(){
 	if (keyCode == 32){
 		bird.jump();
